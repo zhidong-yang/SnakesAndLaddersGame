@@ -11,13 +11,23 @@ namespace SnakesAndLaddersGame.Libraries
         public string Name { get; set; }
         
         Random rdn = new Random();
-        public int[] RollDice()
+        public int RollDice()
         {
-            int[] output = new int[2];
-            output[0] = rdn.Next(1, 7);
-            output[1] = rdn.Next(1, 7);
+            int output = 0;
+            int num1 = rdn.Next(1, 7);
+            int num2 = rdn.Next(1, 7);
+            output += num1 + num2;
+
+            while(num1 == num2) 
+            {
+                Console.WriteLine("You got another chance to roll the dice!");
+                num1 = rdn.Next(1,7);
+                num2 = rdn.Next(1,7);
+                output += num1 + num2;
+            }
 
             return output;
         }
+       
     }
 }
